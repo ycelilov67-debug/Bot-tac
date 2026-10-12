@@ -1,5 +1,4 @@
-# Gereksinimler: discord.py 2.x, aiohttp
-# pip install -U discord.py aiohttp
+# Gereksinimler: discord.py 2.x, aiohttp, flask
 import discord
 from discord.ext import commands
 from discord import app_commands
@@ -7,6 +6,23 @@ import aiohttp
 import asyncio
 import re
 import os
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot 7/24 Aktivdir!"
+
+def run():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port, use_reloader=False)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.daemon = True
+    t.start()
 
 # ----------------- AYARLAR (KENDİ DEĞERLERİNİZİ YERİNE KOYUN) -----------------
 # ⚠️ GÜVENLİĞİNİZ İÇİN BU DEĞERLERİ KİMSEYLE PAYLAŞMAYIN!
