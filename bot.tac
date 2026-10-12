@@ -6,10 +6,11 @@ from discord import app_commands
 import aiohttp
 import asyncio
 import re
+import os
 
 # ----------------- AYARLAR (KENDİ DEĞERLERİNİZİ YERİNE KOYUN) -----------------
 # ⚠️ GÜVENLİĞİNİZ İÇİN BU DEĞERLERİ KİMSEYLE PAYLAŞMAYIN!
-BOT_TOKEN = "MTUwNDYxMDAwMzQxODYxNTg5OA.Gum2Dz.hPpvQVT0kqddgzac6Jtelzly7P9Y_22VW3FLKM"
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 ROBLOX_COOKIE = "_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_CAEQAhoEEAQYASIcCgRkdWlkEhQxNjE0NDExMjQwOTU3MTAwNTcyMiIVCgV1bmFtZRIMVFJBUlVUQkVCT1QxIhIKA3VpZBILMTA5MTEwOTE1MjcoAw.8G-o281mMdCMqIHh-YKlIxnP80sr2n5xvFWc4RCrrf7rXj0SMz6mlnKXW8tuXGEv1kUzYKMpPSpg_i_hyZSgqMq7VjtdnkKSjib-SfaoAJG6u3nmFdC9i22_0z99uEVSoyaXJbY2jb1aPUdLpmNEVG5nmGVIqd5a3iHciciH6D-A8aTw4Yzw9f1gr3eZQKU9G169K10bHYax3NyP_xcSv3HXgf64EwzbZJgYtHQRH3_BnBc2YMo9rfFzHO9sm2zhyIoqkqGvWRyzwq_HTBdfzNEv5EScwc6EMt4r0aLLBworpY3AZ9dFZ0PxD6UA6YY3GNTVZu4dNIsQ4o32X_oJi6_CoVfLcqMBl6p4wnnvOXZJ92YLjY_oHv9m8-FDmyXIc-ilxa_iG_c5t3mCz8umW0FDo-ILtQrvkcncZNa94D00VKi08J-E76N-hCXA9zqJLpF1ykMbEFbJeJkbtKu-ItjtNg9IoWqKeqoK11Vh8Rp39hRkQdB8Morq4yfuScB6vJUjt3imbh0XI2dLNS-sgoGoTUvkLqh7JcJf7ngTrcClTgab6uUWRjFmmk6MFJMevlrV78EdyBmNZcK5rbc_Ust-BPLRIki7_iYCHBwOu_7weXYbfQs7VX1ghzMJejqF5HtwLpgLWZktW4KeJEx6QWnquomyWCUA_Yzlok6fv4a8KWkilwKUZ7cyZQbfHXmfiVwUm_QP-uAompu5rb4Eh-r41OVp0tTG9fKqSiD2-SDIPgPsmX1Qn-TQS4ov2s4QRQYCQVL0WfAC7bGNH4Jos8iSWG9_iCretek1AfZfJoWDikzB0ZwHfPNqG_JrVmvhh-lLZXNDOSOKsW-5U65HenolqDjuPYoX1a1B6jw2CyE.VEoR8vTG2YdI0sUhUEaKM6NLKB0"
 
 GROUP_ID = 33158504               # Roblox Grup ID'niz
@@ -685,8 +686,8 @@ async def aktiflik_sorgu(interaction: discord.Interaction):
 
 
 if __name__ == "__main__":
-    if BOT_TOKEN == "YENI_DISCORD_BOT_TOKENINIZI_BURAYA_YAZIN":
-        print("Lütfen BOT_TOKEN alanını doldurun.")
+    if not BOT_TOKEN:
+        print("Lütfen Render Environment Variables hissəsinə BOT_TOKEN əlavə edin!")
     else:
         bot.run(BOT_TOKEN)
 
