@@ -15,12 +15,12 @@ app = Flask('')
 def home():
     return "Bot 7/24 Aktivdir!"
 
-def run():
+def run_flask():
     port = int(os.environ.get("PORT", 10000))
-    app.run(host='0.0.0.0', port=port, use_reloader=False)
+    app.run(host='0.0.0.0', port=port)
 
 def keep_alive():
-    t = Thread(target=run)
+    t = Thread(target=run_flask)
     t.daemon = True
     t.start()
 
@@ -705,5 +705,5 @@ if __name__ == "__main__":
     if not BOT_TOKEN:
         print("Lütfen Render Environment Variables hissəsinə BOT_TOKEN əlavə edin!")
     else:
+        keep_alive()  # Flask serverini arxa fonda başladır ki, Render portu görsün
         bot.run(BOT_TOKEN)
-
